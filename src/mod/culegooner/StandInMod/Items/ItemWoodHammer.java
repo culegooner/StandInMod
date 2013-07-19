@@ -2,13 +2,11 @@ package mod.culegooner.StandInMod.Items;
 
 import mod.culegooner.StandInMod.ModMain;
 
+public class ItemWoodHammer extends ItemMod {
 
-
-public class ItemDHammer extends ItemMod {
-
-	public ItemDHammer(int id) {
+	public ItemWoodHammer(int id) {
 		super(id);
-        this.setUnlocalizedName("ItemDHammer");
+        this.setUnlocalizedName("woodHammer");
         this.setCreativeTab(ModMain.tabMod);
         this.setMaxDamage(256);
 	}

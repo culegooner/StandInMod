@@ -4,11 +4,11 @@ import mod.culegooner.StandInMod.ModMain;
 
 
 
-public class ItemTHammer extends ItemMod {
+public class ItemCobbleHammer extends ItemMod {
 
-	public ItemTHammer(int id) {
+	public ItemCobbleHammer(int id) {
 		super(id);
-        this.setUnlocalizedName("ItemTHammer");
+        this.setUnlocalizedName("cobbleHammer");
         this.setCreativeTab(ModMain.tabMod);
         this.setMaxDamage(256);
 	}

@@ -8,18 +8,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class InitItemsMods {
 
-	 public static Item dHammer;
-	 public static Item tHammer;
+	 public static Item cobbleHammer;
+	 public static Item woodHammer;
 
     public static void init() {
 
         /* Initialize each mod item individually */
-    	dHammer = new ItemDHammer(5000);
-    	tHammer = new ItemTHammer(5001);
+    	cobbleHammer = new ItemCobbleHammer(5000);
+    	woodHammer = new ItemWoodHammer(5001);
       
        
-        GameRegistry.addRecipe(new ItemStack(dHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.cobblestone, Character.valueOf('s'), Item.stick  });
-        GameRegistry.addRecipe(new ItemStack(tHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.planks, Character.valueOf('s'), Item.stick  });
+        GameRegistry.addRecipe(new ItemStack(cobbleHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.cobblestone, Character.valueOf('s'), Item.stick  });
+        GameRegistry.addRecipe(new ItemStack(woodHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.planks, Character.valueOf('s'), Item.stick  });
         
     }
 }
