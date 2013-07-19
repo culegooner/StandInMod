@@ -20,4 +20,19 @@ public class CommonProxy implements IGuiHandler {
 		return null;
 	}
 
+	public void registerRenderTickHandler() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void registerKeyBindingHandler() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void registerSoundHandler() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

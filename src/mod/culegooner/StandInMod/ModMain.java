@@ -2,6 +2,8 @@ package mod.culegooner.StandInMod;
 
 import java.util.logging.Level;
 
+import mod.culegooner.StandInMod.Items.InitItemsMods;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLLog;
@@ -18,22 +20,27 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
-
-
-
-
 @Mod(modid = ModLib.MOD_ID, name = ModLib.MOD_NAME, version = ModLib.VERSION_NUMBER)
 @NetworkMod(channels = { ModLib.CHANNEL_NAME }, clientSideRequired = true, serverSideRequired = false, packetHandler = ModPacketHandler.class)
 
 
 public class ModMain {
 	
-	  @SidedProxy(clientSide = ModLib.CLIENT_PROXY_CLASS, serverSide = ModLib.SERVER_PROXY_CLASS)
-	  public static CommonProxy proxy;
 	  @Instance(ModLib.MOD_ID)
 	  public static ModMain instance;
+	  
+	  @SidedProxy(clientSide = ModLib.CLIENT_PROXY_CLASS, serverSide = ModLib.SERVER_PROXY_CLASS)
+	  public static CommonProxy proxy;
+
 	    
+	  public static CreativeTabs tabMod = new ModCreativeTab(CreativeTabs.getNextID(), ModLib.MOD_ID);
 	
+	  
+		@EventHandler 
+	    public void serverStarting(FMLServerStartingEvent event){
+			//event.registerServerCommand(new CommandMod());
+		}
+		
 	@EventHandler
     public void preModInit(FMLPreInitializationEvent event) {
 		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
@@ -57,10 +64,23 @@ public class ModMain {
                 cfg.save();
         }
         
+        LanguageRegistry.instance().loadLocalization(ModLib.LANG_RESOURCE_LOCATION + "en_US.xml", "en_US", true);
+        
+        
         
         // Initialize the Version Check Tick Handler (Client only)
         //TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
         
+     // Initialize the Render Tick Handler (Client only)
+     		proxy.registerRenderTickHandler();
+
+     		// Register the KeyBinding Handler (Client only)
+     		proxy.registerKeyBindingHandler();
+
+     		// Register the Sound Handler (Client only)
+     		proxy.registerSoundHandler();
+     		
+     		InitItemsMods.init();
     }
  
 	@EventHandler
@@ -86,10 +106,7 @@ public class ModMain {
     	
     }
 	
-	@EventHandler 
-    public void serverStarting(FMLServerStartingEvent event){
-		
-	}
+
 	
 		
 	
