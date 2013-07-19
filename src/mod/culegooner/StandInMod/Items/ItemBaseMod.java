@@ -6,9 +6,9 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMod extends Item {
+public class ItemBaseMod extends Item {
 
-	public ItemMod(int id) {
+	public ItemBaseMod(int id) {
 
 		super(id - ModLib.SHIFTED_ID_RANGE_CORRECTION);
 		//maxStackSize = 1;

@@ -2,7 +2,7 @@ package mod.culegooner.StandInMod;
 
 import java.util.logging.Level;
 
-import mod.culegooner.StandInMod.Items.InitItemsMods;
+import mod.culegooner.StandInMod.Items.ItemsInit;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -47,8 +47,13 @@ public class ModMain {
         try
         {
             cfg.load();
-            //blockId = cfg.getBlock("standInBlock", 975).getInt(975);
-            cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");
+            //blockId = 
+            //ItemsInit.COBBLEHAMMER = cfg.getBlock("standInBlock", 975).getInt(975);
+            //ItemsInit.WOODHAMMER = cfg.getBlock("standInBlock", 975).getInt(975);
+            ItemsInit.COBBLEHAMMER = cfg.getItem(ItemsInit.COBBLEHAMMER_NAME, ItemsInit.COBBLEHAMMER_DEFAULT).getInt(ItemsInit.COBBLEHAMMER_DEFAULT);
+            ItemsInit.WOODHAMMER = cfg.getItem(ItemsInit.WOODHAMMER_NAME, ItemsInit.WOODHAMMER_DEFAULT).getInt(ItemsInit.WOODHAMMER_DEFAULT);
+            
+            cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");        
             boolean love = cfg.get("LOVE_HATE_RELATIONSHIP", "love", true).getBoolean(true);
             boolean hate = cfg.get("LOVE_HATE_RELATIONSHIP", "hate", false).getBoolean(false);
             boolean allyouneed = cfg.get(Configuration.CATEGORY_GENERAL, "allyouneed", false).getBoolean(false);
@@ -80,7 +85,7 @@ public class ModMain {
      		// Register the Sound Handler (Client only)
      		proxy.registerSoundHandler();
      		
-     		InitItemsMods.init();
+     		ItemsInit.init();
     }
  
 	@EventHandler
