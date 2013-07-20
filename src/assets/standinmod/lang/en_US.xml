@@ -2,7 +2,10 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
     <comment>English (en_US) Localization File</comment>
-    <entry key="item.cobbleHammer.name">Cobble Hammer</entry>
     <entry key="item.woodHammer.name">Wood Hammer</entry>
+    <entry key="item.cobbleHammer.name">Cobble Hammer</entry>
+    <entry key="item.ironHammer.name">Iron Hammer</entry>
+    <entry key="item.goldHammer.name">Gold Hammer</entry>
+    <entry key="item.diamondHammer.name">Diamond Hammer</entry>
     <entry key="itemGroup.StandInMod">StandIn Mod</entry>
 </properties>

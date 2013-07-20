@@ -50,9 +50,12 @@ public class ModMain {
             //blockId = 
             //ItemsInit.COBBLEHAMMER = cfg.getBlock("standInBlock", 975).getInt(975);
             //ItemsInit.WOODHAMMER = cfg.getBlock("standInBlock", 975).getInt(975);
-            ItemsInit.COBBLEHAMMER = cfg.getItem(ItemsInit.COBBLEHAMMER_NAME, ItemsInit.COBBLEHAMMER_DEFAULT).getInt(ItemsInit.COBBLEHAMMER_DEFAULT);
             ItemsInit.WOODHAMMER = cfg.getItem(ItemsInit.WOODHAMMER_NAME, ItemsInit.WOODHAMMER_DEFAULT).getInt(ItemsInit.WOODHAMMER_DEFAULT);
-            
+            ItemsInit.COBBLEHAMMER = cfg.getItem(ItemsInit.COBBLEHAMMER_NAME, ItemsInit.COBBLEHAMMER_DEFAULT).getInt(ItemsInit.COBBLEHAMMER_DEFAULT);
+            ItemsInit.IRONHAMMER = cfg.getItem(ItemsInit.IRONHAMMER_NAME, ItemsInit.IRONHAMMER_DEFAULT).getInt(ItemsInit.IRONHAMMER_DEFAULT);
+            ItemsInit.GOLDHAMMER = cfg.getItem(ItemsInit.GOLDHAMMER_NAME, ItemsInit.GOLDHAMMER_DEFAULT).getInt(ItemsInit.GOLDHAMMER_DEFAULT);
+            ItemsInit.DIAMONDHAMMER = cfg.getItem(ItemsInit.DIAMONDHAMMER_NAME, ItemsInit.DIAMONDHAMMER_DEFAULT).getInt(ItemsInit.DIAMONDHAMMER_DEFAULT);
+           
             cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");        
             boolean love = cfg.get("LOVE_HATE_RELATIONSHIP", "love", true).getBoolean(true);
             boolean hate = cfg.get("LOVE_HATE_RELATIONSHIP", "hate", false).getBoolean(false);

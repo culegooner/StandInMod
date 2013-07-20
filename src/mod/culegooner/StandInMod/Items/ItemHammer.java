@@ -1,67 +1,49 @@
 package mod.culegooner.StandInMod.Items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mod.culegooner.StandInMod.ModLib;
+import mod.culegooner.StandInMod.ModMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Direction;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.item.ItemPickaxe;
 
-public class ItemCobbleHammer extends ItemModTools {
+public class ItemHammer extends ItemPickaxe {
 
-	public ItemCobbleHammer(int id) {
-		super(id, 2.0F, EnumToolMaterial.EMERALD, blocksEffectiveAgainst);
-		this.setUnlocalizedName(ItemsInit.COBBLEHAMMER_NAME);
+	protected String itemModName;
+
+	public ItemHammer(int id, String name, EnumToolMaterial par3EnumToolMaterial) {
+		super(id - ModLib.SHIFTED_ID_RANGE_CORRECTION, par3EnumToolMaterial);
+		itemModName = name;
+
+		this.setCreativeTab(ModMain.tabMod);
+		this.setUnlocalizedName(itemModName);
+		// maxStackSize = 1;
+		// setNoRepair();
 	}
 
-	/** an array of the blocks this pickaxe is effective against */
-	public static final Block[] blocksEffectiveAgainst = new Block[] {
-			Block.cobblestone, Block.stoneDoubleSlab, Block.stoneSingleSlab,
-			Block.stone, Block.sandStone, Block.cobblestoneMossy,
-			Block.oreIron, Block.blockIron, Block.oreCoal, Block.blockGold,
-			Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice,
-			Block.netherrack, Block.oreLapis, Block.blockLapis,
-			Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail,
-			Block.railDetector, Block.railPowered, Block.railActivator };
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+
+		itemIcon = iconRegister.registerIcon(ModLib.MOD_ID.toLowerCase()
+				+ ":"
+				+ this.getUnlocalizedName().substring(
+						this.getUnlocalizedName().indexOf(".") + 1));
+	}
 
 	static Material[] materials = new Material[] { Material.rock,
 			Material.iron, Material.ice, Material.glass, Material.piston,
-			Material.anvil };
-
-	/**
-	 * Returns if the item (tool) can harvest results from the block type.
-	 */
-	public boolean canHarvestBlock(Block par1Block) {
-		return par1Block == Block.obsidian ? this.toolMaterial
-				.getHarvestLevel() == 3
-				: (par1Block != Block.blockDiamond
-						&& par1Block != Block.oreDiamond ? (par1Block != Block.oreEmerald
-						&& par1Block != Block.blockEmerald ? (par1Block != Block.blockGold
-						&& par1Block != Block.oreGold ? (par1Block != Block.blockIron
-						&& par1Block != Block.oreIron ? (par1Block != Block.blockLapis
-						&& par1Block != Block.oreLapis ? (par1Block != Block.oreRedstone
-						&& par1Block != Block.oreRedstoneGlowing ? (par1Block.blockMaterial == Material.rock ? true
-						: (par1Block.blockMaterial == Material.iron ? true
-								: par1Block.blockMaterial == Material.anvil))
-						: this.toolMaterial.getHarvestLevel() >= 2)
-						: this.toolMaterial.getHarvestLevel() >= 1)
-						: this.toolMaterial.getHarvestLevel() >= 1)
-						: this.toolMaterial.getHarvestLevel() >= 2)
-						: this.toolMaterial.getHarvestLevel() >= 2)
-						: this.toolMaterial.getHarvestLevel() >= 2);
-	}
-
-	/**
-	 * Returns the strength of the stack against a given block. 1.0F base,
-	 * (Quality+1)*2 if correct blocktype, 1.5F if sword
-	 */
-	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-		return par2Block != null
-				&& (par2Block.blockMaterial == Material.iron
-						|| par2Block.blockMaterial == Material.anvil || par2Block.blockMaterial == Material.rock) ? this.efficiencyOnProperMaterial
-				: super.getStrVsBlock(par1ItemStack, par2Block);
-	}
+			Material.anvil, Material.grass, Material.ground, Material.sand,
+			Material.snow, Material.craftedSnow, Material.clay };
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, int X, int Y, int Z,
@@ -92,10 +74,32 @@ public class ItemCobbleHammer extends ItemModTools {
 
 		// player.addChatMessage("X: " + X + " Y: " + Y + " Z: " + Z +
 		// " movingobjectposition.side " + movingobjectposition.sideHit);
-
 		int xRange = 1;
 		int yRange = 1;
 		int zRange = 1;
+
+		if (this.itemModName == ItemsInit.COBBLEHAMMER_NAME) {
+			xRange = 1;
+			yRange = 1;
+			zRange = 1;
+		} else if (this.itemModName == ItemsInit.IRONHAMMER_NAME) {
+			xRange = 2;
+			yRange = 2;
+			zRange = 2;
+		} else if (this.itemModName == ItemsInit.GOLDHAMMER_NAME) {
+			xRange = 2;
+			yRange = 2;
+			zRange = 2;
+		} else if (this.itemModName == ItemsInit.DIAMONDHAMMER_NAME) {
+			xRange = 2;
+			yRange = 2;
+			zRange = 2;
+		} else {
+			xRange = 1;
+			yRange = 1;
+			zRange = 1;
+		}
+
 		switch (movingobjectposition.sideHit) {
 		case 0:
 		case 1:
@@ -110,7 +114,39 @@ public class ItemCobbleHammer extends ItemModTools {
 			xRange = 0;
 			break;
 		}
-
+		 
+		/**
+	     * Which side was hit. If its -1 then it went the full length of the ray trace. Bottom = 0, Top = 1, East = 2, West
+	     * = 3, North = 4, South = 5.
+	     */
+  
+	      //Direction.directions[i5]
+	      //0 South
+	      //1 West
+	      //2 North
+	      //3 East
+		 
+		if(this.itemModName == ItemsInit.WOODHAMMER_NAME){
+			 int i5 = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+			 //player.addChatMessage("sideHit " + movingobjectposition.sideHit + " i5: " + i5 + " X: " + xRange + " Y: " + yRange + " Z: " + zRange);
+				
+		 
+			switch (i5) {
+			case 0:
+				xRange = 0;
+				break;
+			case 1:
+				zRange = 0;
+				break;
+			case 2:
+				xRange = 0;
+				break;
+			case 3:
+				zRange = 0;
+				break;
+			}
+		}
+		
 		for (int xPos = X - xRange; xPos <= X + xRange; xPos++) {
 			for (int yPos = Y - yRange; yPos <= Y + yRange; yPos++) {
 				for (int zPos = Z - zRange; zPos <= Z + zRange; zPos++) {

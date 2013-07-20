@@ -11,6 +11,7 @@ public class ModLib {
 	    public static final String DEPENDENCIES = "required-after:Forge@[9.10.0.777,)";
 	    public static final int SECOND_IN_TICKS = 20;
 	    public static final int SHIFTED_ID_RANGE_CORRECTION = 256;
+	    public static final int ITEMID_START = 5000;
 	    public static final String SERVER_PROXY_CLASS = "mod.culegooner." + MOD_ID + ".CommonProxy";
 	    public static final String CLIENT_PROXY_CLASS = "mod.culegooner." + MOD_ID + ".ClientProxy";
 	    public static final int VERSION_CHECK_ATTEMPTS = 3;
