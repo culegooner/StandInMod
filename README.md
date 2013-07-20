@@ -40,7 +40,8 @@ Create a builder entity that takes care of building structures (hmm?!)
 
 Create an Item that drains liquids and deposits liquids.
 
-Make creepers drop raw fish. explains why they hate cats. paws off my fish!
+Make creepers drop raw fish. explains why they hate cats. paws off my fish! *done*
+Added the Spawn Egg drop enchantment *done*
 
 Include a book that has recipies and explains things.
 

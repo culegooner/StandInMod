@@ -16,11 +16,9 @@ public class CreepersDropsFishHandler {
 
 			if (event.entityLiving instanceof EntityCreeper) {
 				double rand = Math.random();
-				// rand = 0.0d;
-				if (rand < 0.75d) {
 
+				if (rand < HandlersInit.FISHCHANCE) {
 					event.entityLiving.dropItem(Item.fishRaw.itemID, 1);
-
 				}
 			}
 
@@ -34,9 +32,8 @@ public class CreepersDropsFishHandler {
 
 					if (event.entityLiving instanceof EntityCreeper) {
 						double rand = Math.random();
-						// rand = 0.0d;
 
-						if (rand < 0.75d) {
+						if (rand < HandlersInit.FISHCHANCE) {
 							event.entityLiving.dropItem(Item.fishRaw.itemID, 1);
 						}
 
