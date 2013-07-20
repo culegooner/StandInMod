@@ -52,8 +52,10 @@ public class ItemHammer extends ItemPickaxe {
 
 		float blockHardness = block.getBlockHardness(player.worldObj, X, Y, Z);
 
-		if (!this.canHarvestBlock(block))
-			return super.onBlockStartBreak(itemstack, X, Y, Z, player);
+		if (ItemsInit.CLEARALLBLOCKS == false) {
+			if (!this.canHarvestBlock(block))
+				return super.onBlockStartBreak(itemstack, X, Y, Z, player);
+		}
 
 		MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(player.worldObj, player, true);
 
@@ -146,19 +148,19 @@ public class ItemHammer extends ItemPickaxe {
 					float localHardness = block == null ? Float.MAX_VALUE : block.getBlockHardness(player.worldObj, xPos, yPos, zPos);
 
 					if (block != null && !(localHardness < 0.0F)) {
-						if (!player.capabilities.isCreativeMode) {
-							if (this.canHarvestBlock(block)) {
-								block.harvestBlock(player.worldObj, player, xPos, yPos, zPos, localMeta);
 
-								block.onBlockHarvested(player.worldObj, X, Y, Z, localMeta, player);
+						if (this.canHarvestBlock(block) || ItemsInit.CLEARALLBLOCKS) {
+							block.harvestBlock(player.worldObj, player, xPos, yPos, zPos, localMeta);
 
-								if (blockHardness > 0.0F)
+							block.onBlockHarvested(player.worldObj, X, Y, Z, localMeta, player);
+
+							if (blockHardness > 0.0F) {
+								if ((this.itemModName == ItemsInit.COBBLEHAMMER_NAME) || (this.itemModName == ItemsInit.WOODHAMMER_NAME))
 									this.onBlockDestroyed(itemstack, player.worldObj, localblockID, xPos, yPos, zPos, player);
-
-								block.removeBlockByPlayer(player.worldObj, player, xPos, yPos, zPos);
 							}
-
+							block.removeBlockByPlayer(player.worldObj, player, xPos, yPos, zPos);
 						}
+
 					}
 
 				}

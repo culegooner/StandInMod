@@ -49,11 +49,11 @@ public class ModMain {
 			ItemsInit.IRONHAMMER = cfg.getItem(ItemsInit.IRONHAMMER_NAME, ItemsInit.IRONHAMMER_DEFAULT).getInt(ItemsInit.IRONHAMMER_DEFAULT);
 			ItemsInit.GOLDHAMMER = cfg.getItem(ItemsInit.GOLDHAMMER_NAME, ItemsInit.GOLDHAMMER_DEFAULT).getInt(ItemsInit.GOLDHAMMER_DEFAULT);
 			ItemsInit.DIAMONDHAMMER = cfg.getItem(ItemsInit.DIAMONDHAMMER_NAME, ItemsInit.DIAMONDHAMMER_DEFAULT).getInt(ItemsInit.DIAMONDHAMMER_DEFAULT);
+			ItemsInit.CLEARALLBLOCKS = cfg.get(Configuration.CATEGORY_GENERAL, "clearAllBlocks", ItemsInit.CLEARALLBLOCKS_DEFAULT).getBoolean(ItemsInit.CLEARALLBLOCKS_DEFAULT);
 
-			cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");
-			boolean love = cfg.get("LOVE_HATE_RELATIONSHIP", "love", true).getBoolean(true);
-			boolean hate = cfg.get("LOVE_HATE_RELATIONSHIP", "hate", false).getBoolean(false);
-			boolean allyouneed = cfg.get(Configuration.CATEGORY_GENERAL, "allyouneed", false).getBoolean(false);
+			// cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");
+			// boolean love = cfg.get("LOVE_HATE_RELATIONSHIP", "love", true).getBoolean(true);
+			// boolean hate = cfg.get("LOVE_HATE_RELATIONSHIP", "hate", false).getBoolean(false);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, "StandInMod has a problem loading it's configuration");

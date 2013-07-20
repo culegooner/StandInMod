@@ -9,6 +9,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemsInit {
 
+	public static boolean CLEARALLBLOCKS_DEFAULT = false;
+	public static boolean CLEARALLBLOCKS;
+	
 	public static final String WOODHAMMER_NAME = "woodHammer";
 	public static final String COBBLEHAMMER_NAME = "cobbleHammer";
 	public static final String IRONHAMMER_NAME = "ironHammer";
