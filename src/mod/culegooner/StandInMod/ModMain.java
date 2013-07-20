@@ -2,8 +2,11 @@ package mod.culegooner.StandInMod;
 
 import java.util.logging.Level;
 
+import mod.culegooner.StandInMod.Events.CreepersDropsFishHandler;
+import mod.culegooner.StandInMod.Events.SpawnEggDropHandler;
 import mod.culegooner.StandInMod.Items.ItemsInit;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLLog;
@@ -19,6 +22,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
+
 @Mod(modid = ModLib.MOD_ID, name = ModLib.MOD_NAME, version = ModLib.VERSION_NUMBER)
 @NetworkMod(channels = { ModLib.CHANNEL_NAME }, clientSideRequired = true, serverSideRequired = false, packetHandler = ModPacketHandler.class)
 public class ModMain {
@@ -31,6 +35,8 @@ public class ModMain {
 
 	public static CreativeTabs tabMod = new ModCreativeTab(CreativeTabs.getNextID(), ModLib.MOD_ID);
 
+	public static final Enchantment eSpawnEggDrop = new EnchantmentSpawnEggDrop(95, 2);
+	
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event) {
 		// event.registerServerCommand(new CommandMod());
@@ -85,8 +91,10 @@ public class ModMain {
 		// Register the GUI Handler
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 
-		MinecraftForge.EVENT_BUS.register(new ModHandler());
-		LanguageRegistry.instance().addStringLocalization("enchantment.espawndrop", "Drop Egg");
+		MinecraftForge.EVENT_BUS.register(new CreepersDropsFishHandler());
+		MinecraftForge.EVENT_BUS.register(new SpawnEggDropHandler());
+		
+		//LanguageRegistry.instance().addStringLocalization("enchantment.espawneggdrop", "Drop Egg");    	
 
 		// CraftingManager.getInstance().getRecipeList().add(new RecipesStandInMod());
 
