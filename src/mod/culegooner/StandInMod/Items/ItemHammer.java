@@ -83,13 +83,13 @@ public class ItemHammer extends ItemPickaxe {
 			yRange = 1;
 			zRange = 1;
 		} else if (this.itemModName == ItemsInit.IRONHAMMER_NAME) {
-			xRange = 2;
-			yRange = 2;
-			zRange = 2;
+			xRange = 1;
+			yRange = 1;
+			zRange = 1;
 		} else if (this.itemModName == ItemsInit.GOLDHAMMER_NAME) {
-			xRange = 2;
-			yRange = 2;
-			zRange = 2;
+			xRange = 1;
+			yRange = 1;
+			zRange = 1;
 		} else if (this.itemModName == ItemsInit.DIAMONDHAMMER_NAME) {
 			xRange = 2;
 			yRange = 2;
@@ -114,23 +114,25 @@ public class ItemHammer extends ItemPickaxe {
 			xRange = 0;
 			break;
 		}
-		 
+
 		/**
-	     * Which side was hit. If its -1 then it went the full length of the ray trace. Bottom = 0, Top = 1, East = 2, West
-	     * = 3, North = 4, South = 5.
-	     */
-  
-	      //Direction.directions[i5]
-	      //0 South
-	      //1 West
-	      //2 North
-	      //3 East
-		 
-		if(this.itemModName == ItemsInit.WOODHAMMER_NAME){
-			 int i5 = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			 //player.addChatMessage("sideHit " + movingobjectposition.sideHit + " i5: " + i5 + " X: " + xRange + " Y: " + yRange + " Z: " + zRange);
-				
-		 
+		 * Which side was hit. If its -1 then it went the full length of the ray
+		 * trace. Bottom = 0, Top = 1, East = 2, West = 3, North = 4, South = 5.
+		 */
+
+		// Direction.directions[i5]
+		// 0 South
+		// 1 West
+		// 2 North
+		// 3 East
+
+		if (this.itemModName == ItemsInit.WOODHAMMER_NAME) {
+			int i5 = MathHelper
+					.floor_double((double) (player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+			// player.addChatMessage("sideHit " + movingobjectposition.sideHit +
+			// " i5: " + i5 + " X: " + xRange + " Y: " + yRange + " Z: " +
+			// zRange);
+
 			switch (i5) {
 			case 0:
 				xRange = 0;
@@ -146,10 +148,13 @@ public class ItemHammer extends ItemPickaxe {
 				break;
 			}
 		}
-		
+
 		for (int xPos = X - xRange; xPos <= X + xRange; xPos++) {
 			for (int yPos = Y - yRange; yPos <= Y + yRange; yPos++) {
 				for (int zPos = Z - zRange; zPos <= Z + zRange; zPos++) {
+
+					if (xPos == X && yPos == Y && zPos == Z)
+						continue;
 
 					int localblockID = player.worldObj.getBlockId(xPos, yPos,
 							zPos);
@@ -184,7 +189,7 @@ public class ItemHammer extends ItemPickaxe {
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 }

@@ -15,9 +15,9 @@ To download the binary click here https://github.com/culegooner/StandInMod/relea
 
 Targets:
 
-Create an Item that breaks blocks (1X3) (accepts silk touch)
+Create an Item that breaks blocks (1X3) (accepts silk touch) *done*
 
-Create an Item that breaks blocks (3X3) (accepts silk touch)
+Create an Item that breaks blocks (3X3) (accepts silk touch) *done*
 
 Create an Item that given the location of the first block and the second block it will fill-in the difference with a given block
 used to create walls, floors, ceiling or rectangular shapes
