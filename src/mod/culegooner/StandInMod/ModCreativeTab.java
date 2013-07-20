@@ -18,5 +18,5 @@ public class ModCreativeTab extends CreativeTabs {
 
 		return Item.skull.itemID;
 	}
-	
+
 }

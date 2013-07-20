@@ -16,10 +16,10 @@ public class ItemsInit {
 	public static final String DIAMONDHAMMER_NAME = "diamondHammer";
 
 	public static int WOODHAMMER_DEFAULT = ModLib.ITEMID_START + 1;
-	public static int COBBLEHAMMER_DEFAULT =  ModLib.ITEMID_START + 2;
-	public static int IRONHAMMER_DEFAULT =  ModLib.ITEMID_START + 3;
-	public static int GOLDHAMMER_DEFAULT =  ModLib.ITEMID_START + 4;
-	public static int DIAMONDHAMMER_DEFAULT =  ModLib.ITEMID_START + 5;
+	public static int COBBLEHAMMER_DEFAULT = ModLib.ITEMID_START + 2;
+	public static int IRONHAMMER_DEFAULT = ModLib.ITEMID_START + 3;
+	public static int GOLDHAMMER_DEFAULT = ModLib.ITEMID_START + 4;
+	public static int DIAMONDHAMMER_DEFAULT = ModLib.ITEMID_START + 5;
 
 	public static int WOODHAMMER;
 	public static int COBBLEHAMMER;
@@ -36,32 +36,17 @@ public class ItemsInit {
 	public static void init() {
 
 		/* Initialize each mod item individually */
-		woodHammer = new ItemHammer(WOODHAMMER, WOODHAMMER_NAME,
-				EnumToolMaterial.WOOD);
-		cobbleHammer = new ItemHammer(COBBLEHAMMER, COBBLEHAMMER_NAME,
-				EnumToolMaterial.STONE);
-		ironHammer = new ItemHammer(IRONHAMMER, IRONHAMMER_NAME,
-				EnumToolMaterial.IRON);
-		goldHammer = new ItemHammer(GOLDHAMMER, GOLDHAMMER_NAME,
-				EnumToolMaterial.GOLD);
-		diamondHammer = new ItemHammer(DIAMONDHAMMER, DIAMONDHAMMER_NAME,
-				EnumToolMaterial.EMERALD);
+		woodHammer = new ItemHammer(WOODHAMMER, WOODHAMMER_NAME, EnumToolMaterial.WOOD);
+		cobbleHammer = new ItemHammer(COBBLEHAMMER, COBBLEHAMMER_NAME, EnumToolMaterial.STONE);
+		ironHammer = new ItemHammer(IRONHAMMER, IRONHAMMER_NAME, EnumToolMaterial.IRON);
+		goldHammer = new ItemHammer(GOLDHAMMER, GOLDHAMMER_NAME, EnumToolMaterial.GOLD);
+		diamondHammer = new ItemHammer(DIAMONDHAMMER, DIAMONDHAMMER_NAME, EnumToolMaterial.EMERALD);
 
-		GameRegistry.addRecipe(new ItemStack(woodHammer),
-				new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'),
-						Block.planks, Character.valueOf('s'), Item.stick });
-		GameRegistry.addRecipe(new ItemStack(cobbleHammer), new Object[] {
-			"ccc", "sss", "ccc", Character.valueOf('c'), Block.cobblestone,
-			Character.valueOf('s'), Item.stick });
-		GameRegistry.addRecipe(new ItemStack(ironHammer), new Object[] {
-			"ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotIron,
-			Character.valueOf('s'), Item.stick });
-		GameRegistry.addRecipe(new ItemStack(goldHammer), new Object[] {
-				"ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotGold,
-				Character.valueOf('s'), Item.stick });
-		GameRegistry.addRecipe(new ItemStack(diamondHammer),
-				new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'),
-			Item.diamond, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(woodHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.planks, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(cobbleHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.cobblestone, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(ironHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotIron, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(goldHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotGold, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(diamondHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.diamond, Character.valueOf('s'), Item.stick });
 
 	}
 }
