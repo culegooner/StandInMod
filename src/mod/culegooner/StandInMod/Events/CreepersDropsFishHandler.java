@@ -9,6 +9,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 public class CreepersDropsFishHandler {
 
+	//algorithm by Pahimar
 	@ForgeSubscribe
 	public void onEntityLivingDeath(LivingDeathEvent event) {
 		if (event.source.getDamageType().equals("player")) {
