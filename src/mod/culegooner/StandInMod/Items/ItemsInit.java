@@ -18,24 +18,28 @@ public class ItemsInit {
 	public static final String IRONHAMMER_NAME = "ironHammer";
 	public static final String GOLDHAMMER_NAME = "goldHammer";
 	public static final String DIAMONDHAMMER_NAME = "diamondHammer";
+	public static final String FILLWAND_NAME = "fillWand";
 
 	public static int WOODHAMMER_DEFAULT = ModLib.ITEMID_START + 1;
 	public static int COBBLEHAMMER_DEFAULT = ModLib.ITEMID_START + 2;
 	public static int IRONHAMMER_DEFAULT = ModLib.ITEMID_START + 3;
 	public static int GOLDHAMMER_DEFAULT = ModLib.ITEMID_START + 4;
 	public static int DIAMONDHAMMER_DEFAULT = ModLib.ITEMID_START + 5;
+	public static int FILLWAND_DEFAULT = ModLib.ITEMID_START + 6;
 
 	public static int WOODHAMMER;
 	public static int COBBLEHAMMER;
 	public static int IRONHAMMER;
 	public static int GOLDHAMMER;
 	public static int DIAMONDHAMMER;
+	public static int FILLWAND;
 
 	public static Item woodHammer;
 	public static Item cobbleHammer;
 	public static Item ironHammer;
 	public static Item goldHammer;
 	public static Item diamondHammer;
+	public static Item fillWand;
 
 	public static void init() {
 
@@ -45,12 +49,14 @@ public class ItemsInit {
 		ironHammer = new ItemHammer(IRONHAMMER, IRONHAMMER_NAME, EnumToolMaterial.IRON);
 		goldHammer = new ItemHammer(GOLDHAMMER, GOLDHAMMER_NAME, EnumToolMaterial.GOLD);
 		diamondHammer = new ItemHammer(DIAMONDHAMMER, DIAMONDHAMMER_NAME, EnumToolMaterial.EMERALD);
+		fillWand = new ItemWand(FILLWAND, FILLWAND_NAME);
 
 		GameRegistry.addRecipe(new ItemStack(woodHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.planks, Character.valueOf('s'), Item.stick });
 		GameRegistry.addRecipe(new ItemStack(cobbleHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Block.cobblestone, Character.valueOf('s'), Item.stick });
 		GameRegistry.addRecipe(new ItemStack(ironHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotIron, Character.valueOf('s'), Item.stick });
 		GameRegistry.addRecipe(new ItemStack(goldHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.ingotGold, Character.valueOf('s'), Item.stick });
 		GameRegistry.addRecipe(new ItemStack(diamondHammer), new Object[] { "ccc", "sss", "ccc", Character.valueOf('c'), Item.diamond, Character.valueOf('s'), Item.stick });
+		GameRegistry.addRecipe(new ItemStack(fillWand), new Object[] { "s", "s", "s", Character.valueOf('s'), Item.stick });
 
 	}
 }
