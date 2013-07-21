@@ -151,6 +151,8 @@ public class ItemWand extends Item {
 				EndZ = z;
 			}
 
+			//algorithm by simo_415
+			
 			int xLimit = EndX - StartX + 1;
 			int yLimit = EndY - StartY + 1;
 			int zLimit = EndZ - StartZ + 1;

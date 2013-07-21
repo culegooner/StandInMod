@@ -20,7 +20,7 @@ Create an Item that breaks blocks (1X3) (accepts silk touch) *done*
 Create an Item that breaks blocks (3X3) (accepts silk touch) *done*
 
 Create an Item that given the location of the first block and the second block it will fill-in the difference with a given block
-used to create walls, floors, ceiling or rectangular shapes
+used to create walls, floors, ceiling or rectangular shapes *done*
 
 Create an item that is similar to scaffolding block
 

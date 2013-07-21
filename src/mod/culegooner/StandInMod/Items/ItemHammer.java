@@ -134,6 +134,8 @@ public class ItemHammer extends ItemPickaxe {
 			}
 		}
 
+		//algorithm by mDiyo
+		
 		for (int xPos = X - xRange; xPos <= X + xRange; xPos++) {
 			for (int yPos = Y - yRange; yPos <= Y + yRange; yPos++) {
 				for (int zPos = Z - zRange; zPos <= Z + zRange; zPos++) {
