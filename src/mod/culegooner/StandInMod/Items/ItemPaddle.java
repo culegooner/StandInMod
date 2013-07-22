@@ -171,7 +171,7 @@ public class ItemPaddle extends ItemSpade {
 		return false;
 	}
 
-	  public float canShovel(Block par2Block)
+	  private float canShovel(Block par2Block)
 	    {
 	        for (int i = 0; i < this.blocksEffectiveAgainst.length; ++i)
 	        {
