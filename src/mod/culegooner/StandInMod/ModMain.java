@@ -34,8 +34,6 @@ public class ModMain {
 
 	public static CreativeTabs tabMod = new ModCreativeTab(CreativeTabs.getNextID(), ModLib.MOD_ID);
 
-	public static final Enchantment eSpawnEggDrop = new EnchantmentSpawnEggDrop(95, 2);
-	
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event) {
 		// event.registerServerCommand(new CommandMod());
@@ -57,16 +55,13 @@ public class ModMain {
 			ItemsInit.FILLWAND = cfg.getItem(ItemsInit.FILLWAND_NAME, ItemsInit.FILLWAND_DEFAULT).getInt(ItemsInit.FILLWAND_DEFAULT);
 			ItemsInit.CLEARALLBLOCKS = cfg.get(Configuration.CATEGORY_GENERAL, ItemsInit.CLEARALLBLOCKS_NAME, ItemsInit.CLEARALLBLOCKS_DEFAULT).getBoolean(ItemsInit.CLEARALLBLOCKS_DEFAULT);
 
-			HandlersInit.EGGDROPCHANCE = cfg.get(Configuration.CATEGORY_GENERAL, HandlersInit.EGGDROPCHANCE_NAME, HandlersInit.EGGDROPCHANCE_DEFAULT).getDouble(HandlersInit.EGGDROPCHANCE_DEFAULT);
-			HandlersInit.FISHCHANCE = cfg.get(Configuration.CATEGORY_GENERAL, HandlersInit.FISHCHANCE_NAME, HandlersInit.FISHCHANCE_DEFAULT).getDouble(HandlersInit.FISHCHANCE_DEFAULT);
-
 			
 			// cfg.addCustomCategoryComment("LOVE_HATE_RELATIONSHIP", "Custom bools");
 			// boolean love = cfg.get("LOVE_HATE_RELATIONSHIP", "love", true).getBoolean(true);
 			// boolean hate = cfg.get("LOVE_HATE_RELATIONSHIP", "hate", false).getBoolean(false);
 
 		} catch (Exception e) {
-			FMLLog.log(Level.SEVERE, e, "StandInMod has a problem loading it's configuration");
+			FMLLog.log(Level.SEVERE, e, ModLib.MOD_NAME + " has a problem loading it's configuration");
 		} finally {
 			if (cfg.hasChanged())
 				cfg.save();
